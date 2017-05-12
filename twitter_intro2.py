@@ -2,7 +2,7 @@ import json
 import tweepy
 from tweepy import OAuthHandler
 
-
+# Set up and Authorization keys
 CONSUMER_KEY = 'zIu1zNREssRYGougYYowx6FMR'
 CONSUMER_SECRET = '5oGfKwcpw6z804ROBiuepycbj2Ks58G24LF7DnG4261YKptAVn'
 OAUTH_TOKEN = '861653794618212353-AKK9BlHLBCcgO3Fg5pUrVLZ24g9XisN'
@@ -12,8 +12,31 @@ auth = OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
 api = tweepy.API(auth)
 
+# Yahoo! Where On Earth Ids set up as constants here
 DUB_WOE_ID = 560743
+LON_WOE_ID = 44418
 
+# Use the WOEIDs to get the trending topics
+#in particular locations
 dub_trends = api.trends_place(DUB_WOE_ID)
+lon_trends = api.trends_place(LON_WOE_ID)
 
+# Loop throught the dub_trends results and
+# extract the name attribute for each result,
+# and then add it to a set which is assigned 
+# to the dub_trends_set variable. Repeat for lon_trends
+dub_trends_set = set([trend['name']
+                    for trend in dub_trends[0]['trends']])
+
+lon_trends_set = set([trend['name']
+                    for trend in lon_trends[0]['trends']])
+# Find trends common to both sets and return these 
+# to the common_trends variable.
+common_trends = set.intersection(dub_trends_set, lon_trends_set)
+
+# Print the results (format with json.dumps when necessary)
 print json.dumps(dub_trends, indent=1)
+print json.dumps(lon_trends, indent=1)
+print common_trends
+
+
