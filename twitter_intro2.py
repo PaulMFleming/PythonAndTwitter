@@ -15,11 +15,13 @@ api = tweepy.API(auth)
 # Yahoo! Where On Earth Ids set up as constants here
 DUB_WOE_ID = 560743
 LON_WOE_ID = 44418
+CHI_WOE_ID = 2379574
 
 # Use the WOEIDs to get the trending topics
 #in particular locations
 dub_trends = api.trends_place(DUB_WOE_ID)
 lon_trends = api.trends_place(LON_WOE_ID)
+chi_trends = api.trends_place(CHI_WOE_ID)
 
 # Loop throught the dub_trends results and
 # extract the name attribute for each result,
@@ -30,13 +32,21 @@ dub_trends_set = set([trend['name']
 
 lon_trends_set = set([trend['name']
                     for trend in lon_trends[0]['trends']])
-# Find trends common to both sets and return these 
-# to the common_trends variable.
+chi_trends_set = set([trend['name']
+                    for trend in chi_trends[0]['trends']])
+
+# Find trends common to two locations and return 
+# results to the common_trends variable.
 common_trends = set.intersection(dub_trends_set, lon_trends_set)
+
+# Find the differing trends of two locations
+# and return the results
+differing_trends= set.difference(lon_trends_set, chi_trends_set)
 
 # Print the results (format with json.dumps when necessary)
 print json.dumps(dub_trends, indent=1)
 print json.dumps(lon_trends, indent=1)
-print common_trends
+print "\n", common_trends
+print "\n", differing_trends
 
 
