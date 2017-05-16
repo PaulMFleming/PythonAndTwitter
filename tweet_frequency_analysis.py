@@ -48,3 +48,4 @@ for label, data in (('Text', status_texts),
     counter = Counter(data)
     [ table.add_row(entry) for entry in counter.most_common()[:10] ]
     table.align[label], table.align['Count'] = 'l', 'r' # align the columns
+    print table
