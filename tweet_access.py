@@ -23,4 +23,5 @@ for status in results:
     print status.user.id
     print status.user.screen_name
     print status.user.profile_img_url_https
+    print status.user.followers_count
     print status.place
