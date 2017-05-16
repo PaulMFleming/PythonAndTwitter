@@ -31,6 +31,8 @@ hashtags = [ hashtag['text']
 words = [ w for t in status_texts
             for w in t.split() ]
 
+# Print the 10 most common screen names, hastags and words in 
+# tweets relating to our query
 for entry in [screen_names, hashtags, words]:
     counter = Counter(entry)
     print counter.most_common()[:10] # the top 10 results
