@@ -1,8 +1,6 @@
 import json
 import tweepy
 from tweepy import OAuthHandler
-from collections import Counter # Class that keeps track of how many times 
-                                # equivallent values are added
 
 CONSUMER_KEY = 'zIu1zNREssRYGougYYowx6FMR'
 CONSUMER_SECRET = '5oGfKwcpw6z804ROBiuepycbj2Ks58G24LF7DnG4261YKptAVn'
