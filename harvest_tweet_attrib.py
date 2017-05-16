@@ -27,7 +27,7 @@ hashtags = [ hashtag['text']
                         for status in results
                             for hashtag in status._json['entities']['hashtags']]
 
-words = [ words
+words = [ word
                         for text in status_texts
                             for word in text.split() ]
 
