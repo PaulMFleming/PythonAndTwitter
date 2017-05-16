@@ -2,6 +2,7 @@ import json
 import tweepy
 from tweepy import OAuthHandler
 from collections import Counter # keeps track of how many times equivalent vallues added
+from prettytable import PrettyTable
 
 CONSUMER_KEY = 'zIu1zNREssRYGougYYowx6FMR'
 CONSUMER_SECRET = '5oGfKwcpw6z804ROBiuepycbj2Ks58G24LF7DnG4261YKptAVn'
@@ -33,7 +34,17 @@ words = [ w for t in status_texts
 
 # Print the 10 most common screen names, hastags and words in 
 # tweets relating to our query
+
 for entry in [screen_names, hashtags, words]:
     counter = Counter(entry)
     print counter.most_common()[:10] # the top 10 results
     print
+
+# Do the same as above, only use Pretty Table to format the results
+for label, data in (('Text', status_texts),
+                    ('Screen Name', screen_names),
+                    ('Word', words)):
+    table = PrettyTable(field_names=[label, 'Count'])
+    counter = Counter(data)
+    [ table.add_row(entry) for entry in counter.most_common()[:10] ]
+    table.align[label], table.align['Count'] = 'l', 'r' # align the columns
