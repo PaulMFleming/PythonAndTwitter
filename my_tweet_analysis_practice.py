@@ -1,6 +1,7 @@
 import json
 import tweepy
 from tweepy import OAuthHandler
+from prettytable import PrettyTable
 
 CONSUMER_KEY = 'zIu1zNREssRYGougYYowx6FMR'
 CONSUMER_SECRET = '5oGfKwcpw6z804ROBiuepycbj2Ks58G24LF7DnG4261YKptAVn'
@@ -25,4 +26,6 @@ for status in results:
     print "Time Zone:\t", status.user.time_zone, "\n"
 
 # Print the same as above using PrettyTable to format the results
+
+
 
