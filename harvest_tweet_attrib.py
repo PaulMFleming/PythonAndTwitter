@@ -1,6 +1,8 @@
 import json
 import tweepy
 from tweepy import OAuthHandler
+from collections import Counter # Class that keeps track of how many times 
+                                # equivallent values are added
 
 CONSUMER_KEY = 'zIu1zNREssRYGougYYowx6FMR'
 CONSUMER_SECRET = '5oGfKwcpw6z804ROBiuepycbj2Ks58G24LF7DnG4261YKptAVn'
@@ -20,16 +22,16 @@ results = [status for status in tweepy.Cursor(api.search, q=query).items(count)]
 status_texts = [ status._json['text'] for status in results ]
 
 screen_names = [ status._json['user']['screen_name']
-                                for status in results
-                                        for mention in status._json['entities']['user_mentions']]
+                            for status in results
+                            for mention in status._json['entities']['user_mentions'] ]
 
 hashtags = [ hashtag['text']
                         for status in results
-                            for hashtag in status._json['entities']['hashtags']]
+                        for hashtag in status._json['entities']['hashtags'] ]
 
 words = [ word
-                        for text in status_texts
-                            for word in text.split() ]
+            for text in status_texts
+            for word in text.split() ]
 
 print json.dumps(status_texts[0:5], indent=1)
 print json.dumps(screen_names[0:5], indent=1)
