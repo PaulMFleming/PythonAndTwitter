@@ -18,4 +18,4 @@ query = 'Dublin'
 results = [status for status in tweepy.Cursor(api.search, q=query).items(count)]
 
 for result in results:
-    print result
+    print json.dumps(result._json, indent=2)
