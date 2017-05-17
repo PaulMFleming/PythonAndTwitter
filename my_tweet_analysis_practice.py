@@ -40,8 +40,8 @@ print "\n", screen_names
 
 # Print the same as above using PrettyTable to format the results
 
-table = PrettyTable(field_names=['Name', 'Locaation', 'Tweet'])
-[ table.add_row(entry) for entry in status.user.name.encode('utf-8') ]
+table = PrettyTable(field_names=['Name'])
+[ table.add_row(entry) for entry in screen_names ]
 
 table.align = 'l'
 print table
