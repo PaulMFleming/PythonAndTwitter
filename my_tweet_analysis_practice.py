@@ -21,8 +21,7 @@ results = [status for status in tweepy.Cursor(api.search, q=query).items(count)]
 
 # Get the name stats
 screen_names = [ status._json['user']['screen_name']
-                for status in results
-                for mention in status._json['entities']['user_mentions'] ]
+                for status in results ]
 
 # Get the Tweets text
 tweet_text = [ status._json['text'] for status in results ]
