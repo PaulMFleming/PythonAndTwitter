@@ -40,8 +40,8 @@ print "\n", screen_names
 
 # Print the same as above using PrettyTable to format the results
 
-table = PrettyTable(field_names=['Name'])
-[ table.add_row(entry) for entry in screen_names ]
+table = PrettyTable(['Name','Tweet','Location','Time Zone'])
+table.add_row(["Jim","Blah blah blah",'Moon','GMT'])
 
 table.align = 'l'
 print table
