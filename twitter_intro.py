@@ -1,12 +1,13 @@
 import json
 import tweepy
 from tweepy import OAuthHandler
+from settings import twitter_app_config
 
 
-CONSUMER_KEY = 'zIu1zNREssRYGougYYowx6FMR'
-CONSUMER_SECRET = '5oGfKwcpw6z804ROBiuepycbj2Ks58G24LF7DnG4261YKptAVn'
-OAUTH_TOKEN = '861653794618212353-AKK9BlHLBCcgO3Fg5pUrVLZ24g9XisN'
-OAUTH_TOKEN_SECRET = 'wBickhWc05d1pMU8F49eImS9oEpKJvJHkjMuLxo4GlvXE'
+CONSUMER_KEY = twitter_app_config.get('CONSUMER_KEY')
+CONSUMER_SECRET = twitter_app_config.get('CONSUMER_SECRET')
+OAUTH_TOKEN = twitter_app_config.get('OAUTH_TOKEN')
+OAUTH_TOKEN_SECRET = twitter_app_config.get('OAUTH_TOKEN_SECRET')
 
 auth = OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
