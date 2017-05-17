@@ -40,9 +40,8 @@ print "\n", screen_names
 
 # Print the same as above using PrettyTable to format the results
 
-table = PrettyTable(['Name','Tweet','Location'])
-table.add_row(["Jim","Blah blah blah",'Moon'])
-[ table.add_row(entry) for entry in [(screen_names,(tweet_text),(locations))] ]
+table = PrettyTable(['Tweet'])
+[ table.add_row(entry) for entry in tweet_text ]
 
 table.align = 'l'
 print table
