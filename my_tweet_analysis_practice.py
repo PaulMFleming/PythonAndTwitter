@@ -35,7 +35,8 @@ for status in results:
     print "Description:\t", status.user.description.encode('utf-8'), "\n"
     print "Location:\t", status.user.location.encode('utf-8'), "\n"
     print "Time Zone:\t", status.user.time_zone, "\n"
-    print "\n", screen_names
+
+print "\n", screen_names
 
 # Print the same as above using PrettyTable to format the results
 
