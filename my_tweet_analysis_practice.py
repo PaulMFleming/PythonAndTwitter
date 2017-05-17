@@ -43,7 +43,7 @@ print "\n", screen_names
 table = PrettyTable(['Name','Tweet','Location'])
 table.add_row(["Jim","Blah blah blah",'Moon'])
 for tweet in [(tweet_text),(screen_names), (locations)]:
-    table.add_row(entry)
+    table.add_row(tweet)
 
 table.align = 'l'
 print table
