@@ -19,19 +19,29 @@ query = 'Cohen'
 # Get all stats
 results = [status for status in tweepy.Cursor(api.search, q=query).items(count)]
 
+# Get the name stats
+screen_names = [ status._json['user']['screen_name']
+                for status in results
+                for mention in status._json['entities']['user_mentions'] ]
+
+# Get the Tweets text
+tweet_text = [ status._json['text'] for status in results ]
+
+# Get the location
+locations = [ status._json['user']['location'] for status in results]
+
 # Print the following attributes:
 for status in results:
     print "Name:\t", status.user.name.encode('utf-8'), "\n"
     print "Description:\t", status.user.description.encode('utf-8'), "\n"
     print "Location:\t", status.user.location.encode('utf-8'), "\n"
     print "Time Zone:\t", status.user.time_zone, "\n"
+    print "\n", screen_names
 
 # Print the same as above using PrettyTable to format the results
 
-table = PrettyTable(field_names=['Name', 'Locaation', 'Description'])
+table = PrettyTable(field_names=['Name', 'Locaation', 'Tweet'])
 [ table.add_row(entry) for entry in status.user.name.encode('utf-8') ]
-[ table.add_row(entry) for entry in status.user.location.encode('utf-8') ]
-[ table.add_row(entry) for entry in status.user.description.encode('utf-8') ]
 
 table.align = 'l'
 print table
