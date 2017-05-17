@@ -29,7 +29,7 @@ for status in results:
 # Print the same as above using PrettyTable to format the results
 
 table = PrettyTable(field_names=['Name'])
-[ table.add_row(entry) for entry in status.user.name.encode('utf-8') ]
+[ table.add_row(entry) for entry in status.user.location.encode('utf-8') ]
 table.align = 'l'
 print table
 
