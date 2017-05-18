@@ -12,8 +12,8 @@ auth = OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
 api = tweepy.API(auth)
 
-count = 10
-query = 'Dublin'
+count = 50
+query = 'Enda Kenny'
 
 # Get all status
 results = [status for status in tweepy.Cursor(api.search, q=query).items(count)]
