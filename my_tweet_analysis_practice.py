@@ -39,10 +39,10 @@ for status in results:
 print "\n", screen_names
 
 # Print the same as above using PrettyTable to format the results
+for label in ('Text', tweet_text):
+    table = PrettyTable(field_names=[label])
+    [ table.add_row(entry) for entry in tweet_text ]
+    table.align = 'l'
+    print table
 
-table = PrettyTable(['Tweet'])
-[ table.add_row(entry) for entry in tweet_text ]
-
-table.align = 'l'
-print table
 
