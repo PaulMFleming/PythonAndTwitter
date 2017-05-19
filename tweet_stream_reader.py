@@ -14,5 +14,5 @@ for tweet_line in tweets_file:
         results.append(status)
     except:
         continue
-        
-print len(results)
+
+print len(results) # print to test 
