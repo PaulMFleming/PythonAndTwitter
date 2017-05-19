@@ -6,7 +6,7 @@ from settings import twitter_app_config
 CONSUMER_KEY = twitter_app_config.get('CONSUMER_KEY')
 CONSUMER_SECRET = twitter_app_config.get('CONSUMER_SECRET')
 OAUTH_TOKEN = twitter_app_config.get('OAUTH_TOKEN')
-OAUTH_TOKEN_SECRET = twitter_app_config.get('OUATH_TOKEN_SECRET')
+OAUTH_TOKEN_SECRET = twitter_app_config.get('OAUTH_TOKEN_SECRET')
 
 # list of strings to search for (good idea: search for what's trending atm)
 keyword_list = ['WonderWoman','IrishFilm','Cannes2017','Syria'] # track list
@@ -36,4 +36,3 @@ auth.set_access_token(OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
 # the data by filtering for our ketwords
 twitter_stream = Stream(auth, MyStreamListener())
 twitter_stream.filter(track=keyword_list) 
-        
