@@ -27,6 +27,5 @@ lon_trends_set = set([trend['name']
 
 common_trends = set.intersection(dub_trends_set, lon_trends_set)
 
-dub_trends2 = api.trends_place(DUB_WOE_ID)
 
-print json.dumps(dub_trends2, indent=1)
+print json.dumps(lon_trends, indent=1)
